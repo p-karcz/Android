@@ -14,10 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="bottom|end"
-        android:textSize="40sp"
+        android:textSize="60sp"
         android:textColor="@color/black"
-        android:layout_margin="10dp"
-        android:hint="10212"/>
+        android:layout_margin="10dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,20 +31,16 @@
             app:layout_constraintBottom_toTopOf="@id/button4"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/button2"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp" />
+            style="@style/CalculatorButton" />
 
         <Button
             android:id="@+id/button2"
             android:text="@string/two"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/button5"
             app:layout_constraintLeft_toRightOf="@id/button1"
             app:layout_constraintRight_toLeftOf="@id/button3"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/CalculatorButton" />
 
         <Button
             android:id="@+id/button3"
@@ -54,9 +49,7 @@
             app:layout_constraintBottom_toTopOf="@id/button6"
             app:layout_constraintLeft_toRightOf="@id/button2"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/button4"
@@ -65,9 +58,7 @@
             app:layout_constraintBottom_toTopOf="@id/button7"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/button5"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/button5"
@@ -76,9 +67,7 @@
             app:layout_constraintBottom_toTopOf="@id/button8"
             app:layout_constraintLeft_toRightOf="@id/button4"
             app:layout_constraintRight_toLeftOf="@id/button6"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/button6"
@@ -87,8 +76,7 @@
             app:layout_constraintBottom_toTopOf="@id/button9"
             app:layout_constraintLeft_toRightOf="@id/button5"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="100dp"
-            android:layout_height="50dp" />
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/button7"
@@ -97,9 +85,7 @@
             app:layout_constraintBottom_toTopOf="@id/buttonPlus"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/button8"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/button8"
@@ -108,8 +94,7 @@
             app:layout_constraintBottom_toTopOf="@id/button0"
             app:layout_constraintLeft_toRightOf="@id/button7"
             app:layout_constraintRight_toLeftOf="@id/button9"
-            android:layout_width="100dp"
-            android:layout_height="50dp" />
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/button9"
@@ -118,9 +103,7 @@
             app:layout_constraintBottom_toTopOf="@id/buttonMinus"
             app:layout_constraintLeft_toRightOf="@id/button8"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/buttonPlus"
@@ -129,30 +112,25 @@
             app:layout_constraintBottom_toTopOf="@id/buttonMultiply"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/button0"
-            android:layout_width="100dp"
-            android:layout_height="50dp" />
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/button0"
             android:text="@string/zero"
             app:layout_constraintTop_toBottomOf="@id/button8"
             app:layout_constraintBottom_toTopOf="@id/buttonDivide"
-            app:layout_constraintLeft_toRightOf="@id/buttonMinus"
-            app:layout_constraintRight_toLeftOf="@id/buttonPlus"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            app:layout_constraintLeft_toRightOf="@id/buttonPlus"
+            app:layout_constraintRight_toLeftOf="@id/buttonMinus"
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/buttonMinus"
             android:text="@string/minus"
             app:layout_constraintTop_toBottomOf="@id/button9"
-            app:layout_constraintBottom_toTopOf="@id/buttonArrow"
+            app:layout_constraintBottom_toTopOf="@id/buttonDot"
             app:layout_constraintLeft_toRightOf="@id/button0"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/buttonMultiply"
@@ -161,41 +139,43 @@
             app:layout_constraintBottom_toTopOf="@id/buttonEq"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/buttonDivide"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/buttonDivide"
             android:text="@string/divide"
-            app:layout_constraintTop_toBottomOf="@id/button0"
             app:layout_constraintBottom_toTopOf="@id/buttonEq"
             app:layout_constraintLeft_toRightOf="@id/buttonMultiply"
-            app:layout_constraintRight_toLeftOf="@id/buttonArrow"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            app:layout_constraintRight_toLeftOf="@id/buttonDot"
+            app:layout_constraintTop_toBottomOf="@id/button0"
+            style="@style/CalculatorButton"/>
 
         <Button
-            android:id="@+id/buttonArrow"
-            android:text="@string/erase"
+            android:id="@+id/buttonDot"
+            android:text="@string/dot"
             app:layout_constraintTop_toBottomOf="@id/buttonMinus"
             app:layout_constraintBottom_toTopOf="@id/buttonEq"
             app:layout_constraintLeft_toRightOf="@id/buttonDivide"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            style="@style/CalculatorButton"/>
 
         <Button
             android:id="@+id/buttonEq"
             android:text="@string/equals"
-            app:layout_constraintTop_toBottomOf="@id/buttonDivide"
+            app:backgroundTint="@color/design_default_color_secondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/buttonErase"
+            app:layout_constraintTop_toBottomOf="@id/buttonMultiply"
+            style="@style/CalculatorButton"/>
+
+        <Button
+            android:id="@+id/buttonErase"
+            android:text="@string/erase"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/buttonEq"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="330dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"/>
+            app:layout_constraintTop_toBottomOf="@id/buttonDot"
+            style="@style/CalculatorButton"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
