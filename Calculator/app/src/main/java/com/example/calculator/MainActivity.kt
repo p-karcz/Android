@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.calculator.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collectLatest
@@ -109,18 +110,14 @@ class MainActivity : AppCompatActivity() {
             viewModel.currentOperation.collectLatest {
                 resetButtonsBackground()
                 when (it) {
-                    Operation.PLUS -> binding.buttonPlus.setBackgroundColor(
-                        getColor(R.color.design_default_color_secondary_variant)
-                    )
-                    Operation.MINUS -> binding.buttonMinus.setBackgroundColor(
-                        getColor(R.color.design_default_color_secondary_variant)
-                    )
-                    Operation.MULTIPLY -> binding.buttonMultiply.setBackgroundColor(
-                        getColor(R.color.design_default_color_secondary_variant)
-                    )
-                    Operation.DIVIDE -> binding.buttonDivide.setBackgroundColor(
-                        getColor(R.color.design_default_color_secondary_variant)
-                    )
+                    Operation.PLUS -> binding.buttonPlus.backgroundTintList =
+                        ContextCompat.getColorStateList(this@MainActivity, R.color.design_default_color_secondary_variant)
+                    Operation.MINUS -> binding.buttonMinus.backgroundTintList =
+                        ContextCompat.getColorStateList(this@MainActivity, R.color.design_default_color_secondary_variant)
+                    Operation.MULTIPLY -> binding.buttonMultiply.backgroundTintList =
+                        ContextCompat.getColorStateList(this@MainActivity, R.color.design_default_color_secondary_variant)
+                    Operation.DIVIDE -> binding.buttonDivide.backgroundTintList =
+                        ContextCompat.getColorStateList(this@MainActivity, R.color.design_default_color_secondary_variant)
                 }
             }
         }
@@ -128,10 +125,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun resetButtonsBackground() {
         with (binding) {
-            this.buttonPlus.setBackgroundColor(getColor(R.color.design_default_color_primary))
-            this.buttonMinus.setBackgroundColor(getColor(R.color.design_default_color_primary))
-            this.buttonMultiply.setBackgroundColor(getColor(R.color.design_default_color_primary))
-            this.buttonDivide.setBackgroundColor(getColor(R.color.design_default_color_primary))
+            this.buttonPlus.backgroundTintList =
+                ContextCompat.getColorStateList(this@MainActivity, R.color.design_default_color_primary)
+            this.buttonMinus.backgroundTintList =
+                ContextCompat.getColorStateList(this@MainActivity, R.color.design_default_color_primary)
+            this.buttonMultiply.backgroundTintList =
+                ContextCompat.getColorStateList(this@MainActivity, R.color.design_default_color_primary)
+            this.buttonDivide.backgroundTintList =
+                ContextCompat.getColorStateList(this@MainActivity, R.color.design_default_color_primary)
         }
     }
 

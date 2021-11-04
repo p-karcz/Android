@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.math.BigDecimal
 
 class MainViewModel : ViewModel() {
 
@@ -30,21 +31,20 @@ class MainViewModel : ViewModel() {
     }
 
     fun operationClicked(operation: Operation) {
-        if (_result.value.isEmpty()) return
+        if (_result.value.isEmpty()) {
+            setCurrentOperation(operation)
+            return
+        }
 
         if (_currentOperation.value != null && cachedResult.isNotEmpty()) {
+            _result.value = deleteZeros(_result.value)
             callOperation(_currentOperation.value!!)
         }
 
         cachedResult = deleteZeros(_result.value)
         _result.value = ""
 
-        when (operation) {
-            Operation.PLUS -> _currentOperation.value = Operation.PLUS
-            Operation.MINUS -> _currentOperation.value = Operation.MINUS
-            Operation.MULTIPLY -> _currentOperation.value = Operation.MULTIPLY
-            Operation.DIVIDE -> _currentOperation.value = Operation.DIVIDE
-        }
+        setCurrentOperation(operation)
     }
 
     fun dotClicked() {
@@ -57,10 +57,12 @@ class MainViewModel : ViewModel() {
             if (_result.value.isEmpty()) {
                 _result.value = cachedResult
             } else if (cachedResult.isNotEmpty()){
+                _result.value = deleteZeros(_result.value)
                 callOperation(_currentOperation.value!!)
                 _currentOperation.value = null
             }
         }
+        _currentOperation.value = null
         _result.value = deleteZeros(_result.value)
         cachedResult = ""
     }
@@ -78,6 +80,15 @@ class MainViewModel : ViewModel() {
         return true
     }
 
+    private fun setCurrentOperation(operation: Operation) {
+        when (operation) {
+            Operation.PLUS -> _currentOperation.value = Operation.PLUS
+            Operation.MINUS -> _currentOperation.value = Operation.MINUS
+            Operation.MULTIPLY -> _currentOperation.value = Operation.MULTIPLY
+            Operation.DIVIDE -> _currentOperation.value = Operation.DIVIDE
+        }
+    }
+
     private fun callOperation(operation: Operation) {
         when(operation) {
             Operation.PLUS -> add()
@@ -88,9 +99,10 @@ class MainViewModel : ViewModel() {
     }
 
     private fun deleteZeros(newResult: String): String {
+        if (newResult.length == 1 && newResult[0] == '-') return ""
         if (newResult.length == 1 && newResult[0] == '0') return newResult
-        if (newResult.length == 1 && newResult[0] == '0') return "0"
         var newTrimmedResult = newResult.trimStart('0')
+        if (newTrimmedResult.isEmpty()) return "0"
         if (newTrimmedResult.isNotEmpty() && newTrimmedResult[0] == '.') {
             newTrimmedResult = "0$newTrimmedResult"
         }
@@ -104,19 +116,19 @@ class MainViewModel : ViewModel() {
     private fun add() {
         val resultDouble = _result.value.toDouble()
         val cachedResultDouble = cachedResult.toDouble()
-        _result.value = deleteZeros((cachedResultDouble + resultDouble).toString())
+        _result.value = deleteZeros(BigDecimal(cachedResultDouble + resultDouble).toPlainString())
     }
 
     private fun subtract() {
         val resultDouble = _result.value.toDouble()
         val cachedResultDouble = cachedResult.toDouble()
-        _result.value = deleteZeros((cachedResultDouble - resultDouble).toString())
+        _result.value = deleteZeros(BigDecimal(cachedResultDouble - resultDouble).toPlainString())
     }
 
     private fun multiply() {
         val resultDouble = _result.value.toDouble()
         val cachedResultDouble = cachedResult.toDouble()
-        _result.value = deleteZeros((cachedResultDouble * resultDouble).toString())
+        _result.value = deleteZeros(BigDecimal(cachedResultDouble * resultDouble).toPlainString())
     }
 
     private fun divide() {
@@ -129,7 +141,7 @@ class MainViewModel : ViewModel() {
                 _toast.emit("Do not divide by 0")
             }
         } else {
-            _result.value = deleteZeros((cachedResultDouble / resultDouble).toString())
+            _result.value = deleteZeros(BigDecimal(cachedResultDouble / resultDouble).toPlainString())
         }
     }
 }

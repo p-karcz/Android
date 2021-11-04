@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="CalculatorButton" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:textSize">40sp</item>
+    <style name="CalculatorButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textSize">@dimen/text_size</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
-        <item name="android:background">@color/design_default_color_primary</item>
+        <item name="shapeAppearance">@null</item>
+        <item name="backgroundTint">@color/design_default_color_primary</item>
+        <item name="android:textColor">@color/design_default_color_background</item>
+        <item name="strokeColor">@color/design_default_color_secondary</item>
     </style>
 </resources>

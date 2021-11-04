@@ -8,15 +8,20 @@
     android:weightSum="3"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_weight="1"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="bottom|end"
-        android:textSize="60sp"
-        android:textColor="@color/black"
-        android:layout_margin="10dp"/>
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|end"
+            android:textSize="60sp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"/>
+    </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -162,7 +167,7 @@
         <Button
             android:id="@+id/buttonEq"
             android:text="@string/equals"
-            app:backgroundTint="@color/design_default_color_secondary"
+            android:backgroundTint="@color/design_default_color_secondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/buttonErase"
